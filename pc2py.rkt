@@ -442,9 +442,9 @@
                            "jump_mount_tram.switch()\n")]
             [`(dismount-trampoline ,dismount)
              (pc2py-append (tabs level)
-                           "jumpout.switch()\n")]
+                           (symbol->string dismount) ".switch()\n")]
             [`(,func) #:when (is-func? func)
-                      (pc2py-append reg-pc " = " (safe func) "\n")]
+                      (pc2py-append (tabs level) reg-pc " = " (safe func) "\n")]
             [`,elsee
              (let ((elsee ((parse-function-body #f env level) elsee)))
                (pc2py-append "return " elsee "\n"))]
